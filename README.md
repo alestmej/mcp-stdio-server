@@ -24,11 +24,14 @@ How? Run this code and get surprised.
 
 ## How to run
 
-### 1. Build project ###
+### 1. Run as a standalone application
+Easy, no need of Docker, but you must trust my code :-)
+
+#### 1.1 Build project 
 ```bash
- * ./mvnw clean install -DskipTests
+ ./mvnw clean install -DskipTests
 ```
-### 2. Integrate to Claude Desktop ###
+#### 1.2. Integrate to Claude Desktop
 
 To integrate with Claude Desktop, add the following configuration to the file `claude_desktop_config.json`.
 
@@ -56,8 +59,43 @@ Typical locations of `claude_desktop_config.json`:
 For authentication Electrolux API requires an API key and JWT token. AI chat assistant will ask for them during the first interaction. 
 Login to [Electrolux for Developers Portal](https://developer.electrolux.one/dashboard) to get them.
 
-### 3. Test with provided McpClient instead of AI Assistant ###
+### 1.3. Test with provided McpClient instead of AI Assistant ###
 - Run: [McpClient](src/test/kotlin/com/ales/mcp/McpClient.kt)
+
+
+### 2. Run in Docker Container
+Application in Docker is isolated from your computer, cannot read your files etc.
+
+#### 2.1 Build project
+```bash
+ docker build -t mcp-electrolux-server .
+```
+#### 1.2. Integrate to Claude Desktop
+
+To integrate with Claude Desktop, add the following configuration to the file `claude_desktop_config.json`.
+
+Typical locations of `claude_desktop_config.json`:
+- Windows: *C:\Users\<YourUser>\AppData\Roaming\Claude\claude_desktop_config.json*
+- macOS: *~/Library/Application Support/Claude/claude_desktop_config.json*
+- Linux: *~/.config/Claude/claude_desktop_config.json*
+
+```json
+{
+  "mcpServers": {
+    "mcp-electrolux-docker": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "mcp-electrolux-server"
+      ]
+    }
+  }
+}
+```
+For authentication Electrolux API requires an API key and JWT token. AI chat assistant will ask for them during the first interaction.
+Login to [Electrolux for Developers Portal](https://developer.electrolux.one/dashboard) to get them.
 
 ## TODO
 - [ ] Implement commands such as “Turn on the air purifier,” “If my living room hasn’t been cleaned for two days, clean it now,” etc.
