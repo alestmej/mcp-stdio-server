@@ -16,22 +16,7 @@ How? Run this code and get surprised.
 | (Claude, ChatGPT, ...) |                        |   (This Code)   |                     |                    |                    | (Vacuum, Oven, Air Purifier, ...) |
 +------------------------+                        +-----------------+                     +--------------------+                    +-----------------------------------+
 ```
-```Mermaid
-flowchart LR
-    A["AI Chat (LLM)<br>(Claude, ChatGPT, ...)"]
-    B["MCP Server<br>(This Code)"]
-    C["Electrolux Cloud"]
-    D["Home Appliance<br>(Vacuum, Oven, Air Purifier, ...)"]
 
-    A <--- "MCP Protocol" ---> B
-    B <--- "REST API" ---> C
-    C <--- " " ---> D
-
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style B fill:#bbf,stroke:#333,stroke-width:2px
-    style C fill:#ccf,stroke:#333,stroke-width:2px
-    style D fill:#ddf,stroke:#333,stroke-width:2px
-```
 ### References
 * [Model Context Protocol](https://modelcontextprotocol.io)
 * [Electrolux API](https://developer.electrolux.one)
