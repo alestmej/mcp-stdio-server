@@ -14,7 +14,8 @@ COPY src ./src
 RUN ./mvnw clean package -DskipTests
 
 # Stage 2: Runtime
-FROM eclipse-temurin:21-jre-alpine
+# Using Google's Distroless JRE image which is minimal and secure
+FROM gcr.io/distroless/java21-debian12
 WORKDIR /app
 
 # Copy the built jar from the build stage
